@@ -1,19 +1,13 @@
 import { Action } from '@ngrx/store';
-import { Demo } from '../modal/demo.modal';
+import { User } from '../components/users-list/models/user.model';
 
-export const ADD_DEMO = 'Add Demo';
+export const ADD_USER = 'Add User';
 export const REMOVE_DEMO = 'Remove Demo';
 
-export class AddDemo implements Action {
-    readonly type = ADD_DEMO;
+export class AddUser implements Action {
+  readonly type = ADD_USER;
 
-    constructor(public payload: Demo) {}
+  constructor(public payload: User) {}
 }
 
-export class RemoveDemo implements Action {
-    readonly type = REMOVE_DEMO;
-
-    constructor(public payload: number) {}
-}
-
-export type Actions = AddDemo | RemoveDemo;
+export type Actions = AddUser;
