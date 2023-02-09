@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-user-dialog',
@@ -8,7 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateUserDialogComponent {
   public userFormGroup: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(
+    public dialogRef: MatDialogRef<CreateUserDialogComponent>,
+    private fb: FormBuilder
+  ) {
     this.userFormGroup = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
@@ -17,7 +21,10 @@ export class CreateUserDialogComponent {
 
   save(): void {
     console.log(this.userFormGroup.value);
+    this.dialogRef.close();
   }
 
-  close(): void {}
+  close(): void {
+    this.dialogRef.close();
+  }
 }

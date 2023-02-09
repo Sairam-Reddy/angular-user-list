@@ -1,3 +1,14 @@
+.dialog-title {
+  display: flex;
+  align-items: center;
+}
+
+.dialog-content {
+  display: flex;
+  flex: 1;
+}
+
 .form-input {
   margin: 5px;
+  width: 100%;
 }
