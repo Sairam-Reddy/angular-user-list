@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUserDialogComponent } from '../create-user-dialog/create-user-dialog.component';
+import { User } from './models/user.model';
 
 @Component({
   selector: 'app-users-list',
@@ -13,8 +14,9 @@ export class UsersListComponent {
   public createUser(): void {
     const dialogRef = this.dialog.open(CreateUserDialogComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe((user: User) => {
+      if (user) {
+      }
     });
   }
 }
