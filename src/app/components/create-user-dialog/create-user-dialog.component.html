@@ -1,14 +1,12 @@
 <h2 mat-dialog-title>New User</h2>
 <mat-dialog-content class="dialog-content">
-  <mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput />
-  </mat-form-field>
+  <form [formGroup]="userFormGroup">
+    <label for="name">Name: </label>
+    <input class="form-input" id="name" type="text" formControlName="name" />
 
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput />
-  </mat-form-field>
+    <label for="email">Email: </label>
+    <input class="form-input" id="email" type="text" formControlName="email" />
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
