@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
 import { Subject, debounceTime } from 'rxjs';
-import { addUser, getUsers } from '../../store/actions/user.action';
+import {
+  addUser,
+  getUsers,
+  updateQuery,
+} from '../../store/actions/user.action';
 import { UserState } from '../../store/reducers/user.reducer';
 import { userSelector } from '../../store/selectors/user.selector';
 import { CreateUserDialogComponent } from '../create-user-dialog/create-user-dialog.component';
@@ -22,9 +26,9 @@ export class UsersListComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.dispatch(getUsers());
-    this.searchSubject$
-      .pipe(debounceTime(200))
-      .subscribe((x) => console.log('call search API: ', x));
+    this.searchSubject$.pipe(debounceTime(200)).subscribe((x) => {
+      this.store.dispatch(updateQuery(x));
+    });
   }
 
   inputChanged($event) {
