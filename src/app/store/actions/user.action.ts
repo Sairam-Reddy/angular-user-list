@@ -1,5 +1,4 @@
-import { Action } from '@ngrx/store';
-import { createAction } from '@ngrx/store/src/action_creator';
+import { createAction } from '@ngrx/store';
 import { User } from '../../components/users-list/models/user.model';
 
 export const getUsers = createAction('[User] Get Users');
