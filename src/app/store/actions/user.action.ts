@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { User } from '../components/users-list/models/user.model';
+import { User } from '../../components/users-list/models/user.model';
 
 export const ADD_USER = 'Add User';
 
