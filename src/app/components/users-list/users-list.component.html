@@ -1,5 +1,12 @@
 <h1>Users List</h1>
 
+<input
+  type="text"
+  [(ngModel)]="query"
+  (ngModelChange)="inputChanged($event)"
+  placeholder="Search"
+/>
+
 <button mat-raised-button (click)="createUser()">Create User</button>
 
 <section>
