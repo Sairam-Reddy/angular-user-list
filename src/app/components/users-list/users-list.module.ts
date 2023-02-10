@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { StoreModule } from '@ngrx/store';
 import { queryReducer, userReducer } from '../../store/reducers/user.reducer';
 import { CreateUserDialogModule } from '../create-user-dialog/create-user-dialog.module';
@@ -12,6 +15,9 @@ import { UsersListComponent } from './users-list.component';
   imports: [
     CommonModule,
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
     MatButtonModule,
     MatDialogModule,
     CreateUserDialogModule,

@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-input {
+  padding: 5px;
+  display: flex;
+  flex: 1;
+  margin: 5px 10px;
+}
