@@ -12,6 +12,7 @@ import { queryReducer, userReducer } from '../../store/reducers/user.reducer';
 import { CreateUserDialogModule } from '../create-user-dialog/create-user-dialog.module';
 import { UsersListComponent } from './users-list.component';
 import { UserProfileModule } from '../user-profile/user-profile.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   imports: [
@@ -26,6 +27,10 @@ import { UserProfileModule } from '../user-profile/user-profile.module';
     CreateUserDialogModule,
     UserProfileModule,
     StoreModule.forRoot({ users: userReducer, query: queryReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: false, // Restrict extension to log-only mode
+    }),
   ],
   declarations: [UsersListComponent],
   exports: [UsersListComponent],
