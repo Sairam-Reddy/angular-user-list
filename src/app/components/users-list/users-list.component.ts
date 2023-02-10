@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { addUser, getUsers } from '../../store/actions/user.action';
 import { UserState } from '../../store/reducers/user.reducer';
+import { userSelector } from '../../store/selectors/user.selector';
 import { CreateUserDialogComponent } from '../create-user-dialog/create-user-dialog.component';
 import { User } from './models/user.model';
 
@@ -12,7 +13,7 @@ import { User } from './models/user.model';
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit {
-  users$ = this.store.select('users');
+  users$ = this.store.pipe(select(userSelector));
   constructor(public dialog: MatDialog, private store: Store<UserState>) {}
 
   public ngOnInit(): void {
