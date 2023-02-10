@@ -6,14 +6,18 @@
     type="text"
     [(ngModel)]="query"
     (ngModelChange)="inputChanged($event)"
-    placeholder="Search"
+    placeholder="Search User"
   />
 
   <button mat-raised-button (click)="createUser()">Create User</button>
 </div>
 
-<section>
-  <div *ngFor="let user of users$ | async">
-    <div>{{ user.name }}</div>
-  </div>
-</section>
+<mat-chip-listbox class="users-list">
+  <mat-chip-option
+    *ngFor="let user of users$ | async"
+    (click)="selectUser(user)"
+    >{{ user.name }}</mat-chip-option
+  >
+</mat-chip-listbox>
+
+<app-user-profile *ngIf="selectedUser" [user]="selectedUser"></app-user-profile>

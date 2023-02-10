@@ -7,9 +7,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { StoreModule } from '@ngrx/store';
+import { MatChipsModule } from '@angular/material/chips';
 import { queryReducer, userReducer } from '../../store/reducers/user.reducer';
 import { CreateUserDialogModule } from '../create-user-dialog/create-user-dialog.module';
 import { UsersListComponent } from './users-list.component';
+import { UserProfileModule } from '../user-profile/user-profile.module';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import { UsersListComponent } from './users-list.component';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    MatChipsModule,
     CreateUserDialogModule,
+    UserProfileModule,
     StoreModule.forRoot({ users: userReducer, query: queryReducer }),
   ],
   declarations: [UsersListComponent],

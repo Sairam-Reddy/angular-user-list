@@ -21,6 +21,7 @@ export class UsersListComponent implements OnInit {
   users$ = this.store.pipe(select(userSelector));
   query: string = '';
   searchSubject$ = new Subject<string>();
+  selectedUser: User;
 
   constructor(public dialog: MatDialog, private store: Store<UserState>) {}
 
@@ -28,12 +29,15 @@ export class UsersListComponent implements OnInit {
     this.store.dispatch(getUsers());
     this.searchSubject$.pipe(debounceTime(200)).subscribe((x) => {
       this.store.dispatch(updateQuery(x));
-      this.store.dispatch(getUsers());
     });
   }
 
   inputChanged($event) {
     this.searchSubject$.next($event);
+  }
+
+  selectUser(user: User): void {
+    this.selectedUser = user;
   }
 
   public createUser(): void {
