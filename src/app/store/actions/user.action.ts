@@ -7,3 +7,7 @@ export const addUserSuccess = createAction(
   '[User] Add User Success',
   (user: User) => user
 );
+export const updateQuery = createAction(
+  '[Query] Update query',
+  (query: string) => ({ query })
+);

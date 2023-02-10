@@ -4,5 +4,12 @@ import { UserState } from '../reducers/user.reducer';
 
 export const userSelector = createSelector(
   (state: UserState) => state.users,
-  (users: ReadonlyArray<User>) => users
+  (state: UserState) => state.query,
+  (users: ReadonlyArray<User>, query: Readonly<string>) =>
+    query
+      ? users.filter(
+          (user: User) =>
+            user.name.includes(query) || user.email.includes(query)
+        )
+      : users
 );
