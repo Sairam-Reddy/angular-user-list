@@ -1,3 +1,9 @@
 <h1>Users List</h1>
 
 <button mat-raised-button (click)="createUser()">Create User</button>
+
+<section>
+  <div *ngFor="let user of users$ | async">
+    <div>{{ user.name }}</div>
+  </div>
+</section>
