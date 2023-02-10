@@ -12,12 +12,11 @@ import { User } from './models/user.model';
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit {
-  users$;
+  users$ = this.store.select('users');
   constructor(public dialog: MatDialog, private store: Store<UserState>) {}
 
   public ngOnInit(): void {
     this.store.dispatch(getUsers());
-    this.users$ = this.store.select('users');
   }
 
   public createUser(): void {
