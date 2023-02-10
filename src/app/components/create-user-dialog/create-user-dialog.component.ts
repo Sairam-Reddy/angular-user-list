@@ -20,8 +20,7 @@ export class CreateUserDialogComponent {
   }
 
   save(): void {
-    console.log(this.userFormGroup.value);
-    this.dialogRef.close();
+    this.dialogRef.close(this.userFormGroup.value);
   }
 
   close(): void {
