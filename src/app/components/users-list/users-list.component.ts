@@ -28,6 +28,7 @@ export class UsersListComponent implements OnInit {
     this.store.dispatch(getUsers());
     this.searchSubject$.pipe(debounceTime(200)).subscribe((x) => {
       this.store.dispatch(updateQuery(x));
+      this.store.dispatch(getUsers());
     });
   }
 

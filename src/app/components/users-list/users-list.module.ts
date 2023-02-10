@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from '../../store/reducers/user.reducer';
+import { queryReducer, userReducer } from '../../store/reducers/user.reducer';
 import { CreateUserDialogModule } from '../create-user-dialog/create-user-dialog.module';
 import { UsersListComponent } from './users-list.component';
 
@@ -15,7 +15,7 @@ import { UsersListComponent } from './users-list.component';
     MatButtonModule,
     MatDialogModule,
     CreateUserDialogModule,
-    StoreModule.forRoot({ users: userReducer }),
+    StoreModule.forRoot({ users: userReducer, query: queryReducer }),
   ],
   declarations: [UsersListComponent],
   exports: [UsersListComponent],
