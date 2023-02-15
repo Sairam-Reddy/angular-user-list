@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
-import { Subject, debounceTime } from 'rxjs';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import {
   addUser,
   getUsers,
+  loadUsers,
   updateQuery,
 } from '../../store/actions/user.action';
 import { UserState } from '../../store/reducers/user.reducer';
@@ -23,9 +26,17 @@ export class UsersListComponent implements OnInit {
   searchSubject$ = new Subject<string>();
   selectedUser: User;
 
-  constructor(public dialog: MatDialog, private store: Store<UserState>) {}
+  constructor(
+    public dialog: MatDialog,
+    private dbService: NgxIndexedDBService,
+    private store: Store<UserState>
+  ) {}
 
   public ngOnInit(): void {
+    this.dbService.getAll('myStore').subscribe((users: Array<User>) => {
+      this.store.dispatch(loadUsers(users));
+    });
+
     this.store.dispatch(getUsers());
     this.searchSubject$.pipe(debounceTime(200)).subscribe((x) => {
       this.store.dispatch(updateQuery(x));

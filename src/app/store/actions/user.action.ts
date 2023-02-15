@@ -7,3 +7,7 @@ export const updateQuery = createAction(
   '[Query] Update query',
   (query: string) => ({ query })
 );
+export const loadUsers = createAction(
+  '[Items] Load Items',
+  (users: User[]) => ({ users })
+);

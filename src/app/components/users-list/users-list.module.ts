@@ -13,6 +13,22 @@ import { CreateUserDialogModule } from '../create-user-dialog/create-user-dialog
 import { UsersListComponent } from './users-list.component';
 import { UserProfileModule } from '../user-profile/user-profile.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NgxIndexedDBModule, DBConfig } from 'ngx-indexed-db';
+
+const dbConfig: DBConfig = {
+  name: 'myDb',
+  version: 1,
+  objectStoresMeta: [
+    {
+      store: 'users',
+      storeConfig: { keyPath: 'name', autoIncrement: true },
+      storeSchema: [
+        { name: 'name', keypath: 'name', options: { unique: false } },
+        { name: 'email', keypath: 'email', options: { unique: false } },
+      ],
+    },
+  ],
+};
 
 @NgModule({
   imports: [
@@ -31,6 +47,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       maxAge: 25, // Retains last 25 states
       logOnly: false, // Restrict extension to log-only mode
     }),
+    NgxIndexedDBModule.forRoot(dbConfig),
   ],
   declarations: [UsersListComponent],
   exports: [UsersListComponent],
