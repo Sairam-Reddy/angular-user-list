@@ -43,10 +43,6 @@ const dbConfig: DBConfig = {
     CreateUserDialogModule,
     UserProfileModule,
     StoreModule.forRoot({ users: userReducer, query: queryReducer }),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: false, // Restrict extension to log-only mode
-    }),
     NgxIndexedDBModule.forRoot(dbConfig),
   ],
   declarations: [UsersListComponent],

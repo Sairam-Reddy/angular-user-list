@@ -33,7 +33,7 @@ export class UsersListComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.dbService.getAll('myStore').subscribe((users: Array<User>) => {
+    this.dbService.getAll('users').subscribe((users: Array<User>) => {
       this.store.dispatch(loadUsers(users));
     });
 
@@ -57,6 +57,7 @@ export class UsersListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((user: User) => {
       if (user) {
         this.store.dispatch(addUser(user));
+        this.dbService.add('users', user).subscribe();
       }
     });
   }
