@@ -34,7 +34,9 @@ export class UsersListComponent implements OnInit {
 
   public ngOnInit(): void {
     this.dbService.getAll('users').subscribe((users: Array<User>) => {
-      this.store.dispatch(loadUsers(users));
+      if (users) {
+        this.store.dispatch(loadUsers(users));
+      }
     });
 
     this.store.dispatch(getUsers());
